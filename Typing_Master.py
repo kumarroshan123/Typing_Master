@@ -43,6 +43,7 @@ def main():
         print("1. Start Typing Test")
         print("2. Show Leaderboard")
         print("3. Exit")
+        choice = input("Select an option (1/2/3): ")
         if choice == "1":
           category = input("Choose a typing category (animals, fruits, countries, Colors, Vegetables, Sports, Movies, Technology, Musical Instruments, Planets, Weather, Clothing, Insects): ")
           words = choose_words(category)
@@ -79,3 +80,13 @@ def main():
               print("Incorrect! Please type the words exactly as shown.")
         elif choice == "2":
             show_leaderboard()
+        
+        elif choice == "3":
+            print("Exiting the program. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    main()
