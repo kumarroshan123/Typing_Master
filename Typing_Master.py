@@ -1,5 +1,9 @@
 import random
 import time
+import json
+def save_leaderboard(leaderboard):
+    with open("leaderboard.json", 'w') as file:
+        json.dump(leaderboard, file, indent=2)
 def choose_words(category):
     categories_words = {
         "animals": ["dog", "cat", "elephant", "giraffe", "lion", "tiger", "zebra", "penguin", "kangaroo", "koala"],
@@ -55,3 +59,7 @@ def main():
               print(f"\nWords Typed: {words_typed}")
               print(f"Time Taken: {time_taken:.2f} seconds")
               print(f"Words Per Minute: {wpm} WPM")
+              leaderboard = load_leaderboard()
+              leaderboard.append({"username": username, "wpm": wpm})
+              leaderboard = sorted(leaderboard, key=lambda x: x["wpm"], reverse=True)[:10]
+              save_leaderboard(leaderboard)
