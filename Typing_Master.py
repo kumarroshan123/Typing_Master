@@ -7,6 +7,12 @@ def load_leaderboard():
             return json.load(file)
     except FileNotFoundError:
         return []
+def show_leaderboard():
+    leaderboard = load_leaderboard()
+
+    print("\nLeaderboard:")
+    for i, entry in enumerate(leaderboard, start=1):
+        print(f"{i}. {entry['username']}: {entry['wpm']} WPM")
 def save_leaderboard(leaderboard):
     with open("leaderboard.json", 'w') as file:
         json.dump(leaderboard, file, indent=2)
