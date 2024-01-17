@@ -1,6 +1,12 @@
 import random
 import time
 import json
+def load_leaderboard():
+    try:
+        with open("leaderboard.json", 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
 def save_leaderboard(leaderboard):
     with open("leaderboard.json", 'w') as file:
         json.dump(leaderboard, file, indent=2)
