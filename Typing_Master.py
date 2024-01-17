@@ -75,3 +75,7 @@ def main():
               leaderboard.append({"username": username, "wpm": wpm})
               leaderboard = sorted(leaderboard, key=lambda x: x["wpm"], reverse=True)[:10]
               save_leaderboard(leaderboard)
+          else:
+              print("Incorrect! Please type the words exactly as shown.")
+        elif choice == "2":
+            show_leaderboard()
