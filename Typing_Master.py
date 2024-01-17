@@ -1,3 +1,5 @@
+import random
+import time
 def choose_words(category):
     categories_words = {
         "animals": ["dog", "cat", "elephant", "giraffe", "lion", "tiger", "zebra", "penguin", "kangaroo", "koala"],
@@ -32,3 +34,24 @@ def main():
           if not words:
               print(f"Error: Words for category {category} not found.")
               continue
+          input("Get ready! Press Enter to start typing.")
+          start_time = time.time()
+
+          print(" ".join(words)) 
+
+          user_input = input("Type the words exactly as shown. Press Enter to finish: ")
+
+          if user_input.lower() == 'ctrl+q':
+              print("Exiting the typing test.")
+              break
+
+          if user_input.split() == words:
+              end_time = time.time()
+              time_taken = end_time - start_time
+
+              words_typed = len(user_input.split())
+              wpm = int((words_typed / time_taken) * 60)
+
+              print(f"\nWords Typed: {words_typed}")
+              print(f"Time Taken: {time_taken:.2f} seconds")
+              print(f"Words Per Minute: {wpm} WPM")
